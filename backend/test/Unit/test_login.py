@@ -1,7 +1,10 @@
 import pytest
+import unittest.mock as mock
 from src.controllers.usercontroller import UserController
 
 def test_getUser1():
+    mockdao = mock.MagicMock()
+    mockdao.
     email = "test.test@gmail.com"
     assert True == True
 def test_getUser2():
