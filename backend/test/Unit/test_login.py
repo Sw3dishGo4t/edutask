@@ -8,22 +8,25 @@ def test_getUser1():
     sut = UserController(mockdao)
     email = "test.test@gmail.com"
     
-    assert sut.get_user_by_email(sut, email) == "TestUser"
+    assert sut.get_user_by_email(email) == "TestUser"
 def test_getUser2():
     mockdao = mock.MagicMock()
-    mockdao.find.return_value = {'users': "TestUser"}
-    sut = UserController
+    mockdao.find.return_value = ["TestUser"]
+    sut = UserController(mockdao)
     email = "test.test"
-    assert True == True
+    with pytest.raises(ValueError):
+        sut.get_user_by_email(email)
 def test_getUser3():
     mockdao = mock.MagicMock()
-    mockdao.find.return_value = {}
-    sut = UserController
+    mockdao.find.return_value = []
+    sut = UserController(mockdao)
     email = "test.test@gmail.com"
-    assert True == True
+    with pytest.raises(Exception):
+         sut.get_user_by_email(email)
 def test_getUser4():
     mockdao = mock.MagicMock()
-    mockdao.find.return_value = {'users': "TestUser"}
-    sut = UserController
+    mockdao.find.return_value = []
+    sut = UserController(mockdao)
     email = "test.test"
-    assert True == True
+    with pytest.raises(ValueError):
+        sut.get_user_by_email(email)
