@@ -7,7 +7,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-  jobs:
+  steps:
     test:
       runs-on: ubutu-latest
       steps:
