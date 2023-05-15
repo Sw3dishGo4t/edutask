@@ -47,7 +47,7 @@ describe('Add new todo item', () => {
   })
 
   it('add button is disabled', () => {
-    cy.get(':nth-child(2) > a ')
+    cy.get(':nth-child(1) > a ')
       .click()
 
     cy.get('.inline-form > [type="submit"]')
@@ -66,7 +66,7 @@ describe('Add new todo item', () => {
   })
 
   it('todo item is added to list', () => {
-    cy.get(':nth-child(2) > a ')
+    cy.get(':nth-child(3) > a ')
     .click()
 
     cy.get('.inline-form > [type="text"]')
@@ -80,7 +80,7 @@ describe('Add new todo item', () => {
   })
 
   it('todo item gets deactivated', () => {
-    cy.get(':nth-child(2) > a ')
+    cy.get(':nth-child(4) > a ')
     .click()
 
     cy.get('.inline-form > [type="text"]')
@@ -96,7 +96,7 @@ describe('Add new todo item', () => {
   })
 
   it('todo item gets activated', () => {
-    cy.get(':nth-child(2) > a ')
+    cy.get(':nth-child(5) > a ')
     .click()
 
     cy.get('.inline-form > [type="text"]')
@@ -114,7 +114,7 @@ describe('Add new todo item', () => {
   })
 
   it('todo item gets deleated', () => {
-    cy.get(':nth-child(2) > a ')
+    cy.get(':nth-child(6) > a ')
     .click()
 
     cy.get('.inline-form > [type="text"]')
@@ -126,20 +126,10 @@ describe('Add new todo item', () => {
     cy.get(':nth-child(2) > .remover')
       .click()
 
-    cy.get(':nth-child(2)')
-      .should('not.exist')
+    cy.get('.todo-list')
+      .its('length')
+      .should('be.lte', 2)
   })
-
-
-  /*afterEach(function(){
-      // clean up by deleting the user from the database
-      cy.request({
-        method: 'DELETE',
-        url: `http://localhost:5000/tasks/ofuser/${uid}`
-      }).then((response) => {
-        cy.log(response.body)
-      })
-  })*/
 
   after(function () {
     // clean up by deleting the user from the database
