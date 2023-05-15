@@ -92,7 +92,7 @@ describe('Add new todo item', () => {
     cy.get('.todo-list > :nth-child(2) > .checker')
       .click()
     cy.get('.todo-list > :nth-child(2) > .checker')
-      .should('have.class', 'checker')
+      .should('have.class', 'checker checked')
   })
 
   it('todo item gets activated', () => {
@@ -110,7 +110,7 @@ describe('Add new todo item', () => {
       .click()
     
     cy.get('.todo-list > :nth-child(2) > .checker')
-      .should('contain.text', '')
+      .should('have.class', 'checker unchecked')
   })
 
   it('todo item gets deleated', () => {
@@ -127,7 +127,7 @@ describe('Add new todo item', () => {
       .click()
 
     cy.get(':nth-child(2)')
-      .should()
+      .should('not.exist')
   })
 
 
